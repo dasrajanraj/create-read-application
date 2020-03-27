@@ -2,12 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" co2ntent="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Read Application</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="addMember" class="modal fade" role="dialog">
+        <div  class="modal-dialog modal-lg" role="content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Member</h4>
+                    <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form action="/" method="POST">
+                        <div class="form-group row">
+                            <label for="name" class="col-form-label col-md-2">Name</label> 
+                            <div class="col-12 col-md-10">
+                                <input type="text" class="form-control" name="name"placeholder="Full Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-form-label col-md-2">E-mail</label> 
+                            <div class="col-12 col-md-10">
+                                <input type="email" class="form-control" name="email" placeholder="someone@gmail.com">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="age" class="col-form-label col-md-2">Age</label> 
+                            <div class="col-12 col-md-4">
+                                <input type="number" class="form-control" name="age" placeholder="24">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="mobile" class="col-form-label col-md-2">Mobile No.</label> 
+                            <div class="col-12 col-sm-6">
+                                <input type="number" class="form-control" name="mobile" placeholder="9876543210">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="address" class="col-12 col-md-2 col-form-label">Address</label>
+                            <div class="col-12 col-md-10">
+                                <div class="row m-0">
+                                    <input type="text" class="px-2 form-control col-12 col-sm-8" name="address" placeholder="91 Springboard,MG Road, Bengaluru">
+                                    <select name="state" class="mx-1 px-2 form-control  col-12 col-sm-3">
+                                        <option value="null">Select State</option>
+                                        <option value="AP">Andhra Pradesh (AP)</option>
+                                        <option value="AR">Arunachal Pradesh (AR)</option>
+                                        <option value="AS">Assam (AS)</option>
+                                        <option value="BR">Bihar (BR)</option>
+                                        <option value="CG">Chhattisgarh (CG)</option>
+                                        <option value="GA">Goa (GA)</option>
+                                        <option value="GJ">Gujarat (GJ)</option>
+                                        <option value="HR">Haryana (HR)</option>
+                                        <option value="HP">Himachal Pradesh (HP)</option>
+                                        <option value="KJ">Jammu and Kashmir (JK)</option>
+                                        <option value="JH">Jharkhand (JH)</option>
+                                        <option value="KA">Karnataka (KA)</option>
+                                        <option value="KL">Kerala (KL)</option>
+                                        <option value="MP">Madhya Pradesh (MP)</option>
+                                        <option value="MH">Maharashtra (MH)</option>
+                                        <option value="MN">Manipur (MN)</option>
+                                        <option value="ML">Meghalaya (ML)</option>
+                                        <option value="MZ">Mizoram (MZ)</option>
+                                        <option value="NL">Nagaland (NL)</option>
+                                        <option value="OR">Odisha(OR)</option>
+                                        <option value="PB">Punjab (PB)</option>
+                                        <option value="RJ">Rajasthan (RJ)</option>
+                                        <option value="SK">Sikkim (SK)</option>
+                                        <option value="TN">Tamil Nadu (TN)</option>
+                                        <option value="TS">Telangana (TS)</option>
+                                        <option value="TR">Tripura (TR)</option>
+                                        <option value="UP">Uttar Pradesh (UP)</option>
+                                        <option value="UK">Uttarakhand (UK)</option>
+                                        <option value="WB">West Bengal (WB)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-10 offset-sm-2">
+                                <button class="btn btn-secondary" type="submit" data-dismiss="modal">Cancel</button>
+                                <button class="btn btn-primary" type="submit">Add</button>
+                            </div>
+                        </div>
+                    </form>    
+                </div>
+            </div>
+        </div>
+    </div>
     <nav class="navbar navbar-dark">
         <div class="navbar-brand">
             <a href="#" class="nav-link text-white"><strong>LOGO</strong></a>
@@ -15,12 +99,14 @@
     </nav>
     <div class="container">   
         <div class="row">
-            <div class="col-12">
-                <a id="addRecord" href="#" class="btn btn-primary">Add Record</a>
+            <div class="col-5 col-sm-2  offset-7 offset-sm-10">
+                <a data-toggle="modal" data-target="#addMember" class="btn btn-primary btn-block text-white">Add Record</a>
             </div>
-            <div class="col-12">
+        </div>
+        <div class="row">    
+            <div class="col-12   wrap-scroll-y custom-scroll table-responsive">
                 <table class="table table-striped">
-                    <thead class="thead bg-dark">
+                    <thead class="thead bg-dark text-white">
                         <tr>
                             <th>Name</th>
                             <th>E-mail</th>
@@ -30,27 +116,15 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <% list.forEach( function(obj){ %>
                         <tr>
-                            <td>Rajan</td>
-                            <td>Rajan</td>
-                            <td>Rajan</td>
-                            <td>Rajan</td>
-                            <td>Rajan</td>
+                            <td> <%= obj.name %></td>
+                            <td> <%= obj.email %></td>
+                            <td> <%= obj.age %></td>
+                            <td> <%= obj.address %>,<%= obj.state %></td>
+                            <td> <%= obj.mobile %></td>
                         </tr>
-                        <tr>
-                            <td>Rajan</td>
-                            <td>Rajan</td>
-                            <td>Rajan</td>
-                            <td>Rajan</td>
-                            <td>Rajan</td>
-                        </tr>
-                        <tr>
-                            <td>Rajan</td>
-                            <td>Rajan</td>
-                            <td>Rajan</td>
-                            <td>Rajan</td>
-                            <td>Rajan</td>
-                        </tr>
+                    <%}) %>  
                     </tbody>
                 </table>
             </div>

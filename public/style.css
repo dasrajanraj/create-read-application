@@ -6,10 +6,19 @@ body{
 .navbar-dark{
     background-color: rgb(172, 5, 172);
 }
+.container{
+    margin-top: 100px;
+}
+.modal-header{
+    background-color: rgb(172, 5, 172);
+    color:floralwhite;
+}
 
-#addRecord{
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    right: 0;
+.custom-scroll{
+    position: relative;
+    height: 400px;
+    overflow-y: auto;
+}
+.wrap-scroll-y{
+    display: block;
 }

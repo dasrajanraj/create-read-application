@@ -1,0 +1,24 @@
+{
+  "name": "create-read-application",
+  "version": "1.0.0",
+  "description": "This is an assigment for liquidity digital interview.This application consist of read and display task.The page consist of table to display the details like name, age, email, address and mobile number. Also It gives the facilities to add the new data.",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rajan Raj Das",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.4.1",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "jquery": "^3.4.1",
+    "popper": "^1.0.1",
+    "popper.js": "^1.16.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

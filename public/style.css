@@ -16,7 +16,7 @@ body{
 
 .custom-scroll{
     position: relative;
-    height: 400px;
+    height: 300px;
     overflow-y: auto;
 }
 .wrap-scroll-y{

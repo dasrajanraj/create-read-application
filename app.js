@@ -1,34 +1,60 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
+const mongoose = require('mongoose');
+
 const app = express();
 
-const mongoConnect = require('./util/database');
+const Users = require('./model/user');
+const config = require('./util/database');
+
+
+mongoose.connect(config.dbUrl);
+mongoose.connection.on('connected',()=>{
+    console.log("connected successfully");
+})
+mongoose.connection.on('error', err =>{
+    console.log("connection error" , err);
+})
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.set("view engine","ejs");
 app.set("views","view")
 
+
 app.use(express.static(__dirname+'/public'));
-var list = [];
 
 
 app.get("/",(req,res,next)=>{
-    res.render('index',{list:list});
+    Users.getUser(function(err,result){
+        if(err){
+            console.log(err)
+        }
+        else{
+        res.render('index',{list:result});
+        }
+    })
 })
 
 app.post("/",(req,res,next)=>{
-    const obj = JSON.parse(JSON.stringify(req.body));
-    res.redirect('/')
-    console.log(obj);
-    list.push(obj);
-   
+    let user = Users({
+        name:req.body.name,
+        email: req.body.email,
+        age: req.body.age,
+        address: req.body.address,
+        state: req.body.state,
+        mobile: req.body.mobile
+    })
+    Users.addUser(user,function(err,result){
+        if(err){
+            console.log(err);
+        }else{
+            res.redirect('/')
+        }
+    })   
 })
 const port = process.env.PORT || 3000;
 
-
-
-mongoConnect(client =>{
-    console.log(client);
-    app.listen(3000);
+app.listen(port,()=>{
+    console.log("Server listening on port: ",port);
 });
+

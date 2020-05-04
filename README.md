@@ -1,5 +1,5 @@
 # create-read-application
-This is an assigment for liquidity digital interview.This application consist of read and display task.The page consist of table to display the details like name, age, email, address and mobile number. Also It gives the facilities to add the new data.
+This application consist of read and display task.The page consist of table to display the details like name, age, email, address and mobile number. Also It gives the facilities to add the new data.
 
 
 #Clone this app into a folder
